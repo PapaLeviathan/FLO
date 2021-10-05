@@ -15,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Kioyu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Kioyu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
@@ -37,6 +39,8 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" />
     </changedPaths>
   </component>
@@ -91,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633397285626</updated>
-      <workItem from="1633397298273" duration="2604000" />
+      <workItem from="1633397298273" duration="3037000" />
     </task>
     <servers />
   </component>
