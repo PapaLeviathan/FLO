@@ -4,7 +4,7 @@ public class TriggerKnockBackAnimation : TriggerStunAnimation
 {
     protected override void TriggerAnimation(Collider collider)
     {
-        if(GetComponent<Animator>())
+        if(transform.root.gameObject.GetComponent<Animator>())
         collider.GetComponent<Animator>().SetTrigger("Knock Back");
     }
 }

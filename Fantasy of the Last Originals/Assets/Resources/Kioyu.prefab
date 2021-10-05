@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46361610}
-  m_LocalRotation: {x: 0.06528269, y: -0.026751257, z: 0.002696214, w: -0.9975046}
+  m_LocalRotation: {x: 0.06528269, y: -0.026751291, z: 0.0026962182, w: -0.9975046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134277710}
-  m_LocalRotation: {x: 0.08336814, y: -0.0267958, z: 0.002210467, w: -0.9961561}
+  m_LocalRotation: {x: 0.08336814, y: -0.026795767, z: 0.0022104634, w: -0.9961561}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -666,7 +666,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836838286}
-  m_LocalRotation: {x: 0.04780082, y: -0.02669997, z: 0.0031643698, w: -0.9984949}
+  m_LocalRotation: {x: 0.04780082, y: -0.026699938, z: 0.0031643657, w: -0.9984949}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1360,7 +1360,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450810376}
-  m_LocalRotation: {x: 0.027970513, y: -0.000000034813755, z: 9.741398e-10, w: 0.99960876}
+  m_LocalRotation: {x: 0.027970513, y: 0.000000034810377, z: -9.740452e-10, w: 0.99960876}
   m_LocalPosition: {x: 0, y: 1.5620003, z: -5.4000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -10329,7 +10329,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2847847302534144427}
-  - component: {fileID: 4579925249619143148}
   - component: {fileID: 7452381388077808261}
   - component: {fileID: 4434830719393096698}
   - component: {fileID: 2001866352}
@@ -10355,18 +10354,6 @@ Transform:
   m_Father: {fileID: 1573940287629413751}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4579925249619143148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4364423488130787896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5117f313ab24e7e8802c76f357f49ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7452381388077808261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13230,7 +13217,6 @@ GameObject:
   - component: {fileID: 8045577675679183750}
   - component: {fileID: 4907092267759614559}
   - component: {fileID: 8045577675679183748}
-  - component: {fileID: 613421004}
   m_Layer: 6
   m_Name: Right Foot Hitbox
   m_TagString: Untagged
@@ -13350,18 +13336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad224daab900f7479f6454422ed1f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &613421004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8045577675679183747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f4714a3a9e4e3486c9310719ce429c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8045577676265238594
 GameObject:
   m_ObjectHideFlags: 0
@@ -13407,7 +13381,6 @@ GameObject:
   - component: {fileID: 8045577676421583457}
   - component: {fileID: 7571308223857131228}
   - component: {fileID: 8045577676421583463}
-  - component: {fileID: 8045577676421583462}
   m_Layer: 6
   m_Name: Leff Hand Hitbox
   m_TagString: Untagged
@@ -13525,18 +13498,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ad224daab900f7479f6454422ed1f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8045577676421583462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8045577676421583486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5117f313ab24e7e8802c76f357f49ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8045577676465349700
@@ -13841,7 +13802,6 @@ GameObject:
   - component: {fileID: 5138108214025918845}
   - component: {fileID: 2931769524336911959}
   - component: {fileID: 6035913540582401942}
-  - component: {fileID: 1099754125}
   m_Layer: 6
   m_Name: Sword HitBox
   m_TagString: Untagged
@@ -13960,18 +13920,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b28c681bc718de43a89bbe3d29c1d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1099754125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650871973279808324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f4714a3a9e4e3486c9310719ce429c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8671424480930194656

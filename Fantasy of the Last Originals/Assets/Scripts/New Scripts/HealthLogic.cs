@@ -28,7 +28,6 @@ public class HealthLogic : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _animator.SetTrigger("Knock Back");
         _currentHealth -= damage;
         if (_enemy)
             _healthBar.fillAmount = _currentHealth / _maxHealth;
