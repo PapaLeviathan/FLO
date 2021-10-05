@@ -1,0 +1,420 @@
+fileFormatVersion: 2
+guid: 5acd189a4eeadb14bbf3865256493df2
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -955554217822774176
+    second: Fighting Idle S1
+  - first:
+      74: -9121621101649706817
+    second: Running
+  - first:
+      74: 1671638154800662670
+    second: Fight Idle S4 Dum
+  - first:
+      74: -8734154552359765683
+    second: Fight Idle S3
+  - first:
+      74: 1398366233071180454
+    second: Fighting Idle S2
+  - first:
+      74: 5164500139265565935
+    second: Armada S1 Full Edit
+  - first:
+      74: -8132147395740448182
+    second: Kicking S1 Full Edit
+  - first:
+      74: -457999510147634228
+    second: Leg Sweep S1 Full Edit
+  - first:
+      74: 3074719104549886437
+    second: Boxing S2 Full Edit
+  - first:
+      74: 3919280423470879093
+    second: Flying Kick S2 Full Edit
+  - first:
+      74: 2534678800338327943
+    second: Roundhouse Kick S2 Full Edit
+  - first:
+      74: -5631874911575011279
+    second: Headbutt S2 Full Edit
+  - first:
+      74: -1958315285874984822
+    second: Fighting Idle S1 Transition
+  - first:
+      74: -70687480570667356
+    second: Boxing S2
+  - first:
+      74: -8236294861529302032
+    second: Headbutt S2
+  - first:
+      74: -683693068067661824
+    second: Flying Kick S2
+  - first:
+      74: 8653299518061969194
+    second: Boxing S2 Transition
+  - first:
+      74: -4302660183440736835
+    second: Headbutt S2 Transition
+  - first:
+      74: 5539831331247536789
+    second: Jump
+  - first:
+      74: 4397059466156116884
+    second: Airborne
+  - first:
+      74: -7497848331705974981
+    second: Land
+  - first:
+      74: -2307679201627758524
+    second: Fighting Idle S2 Transition
+  - first:
+      74: -2105938485591839920
+    second: S2 Attack 1
+  - first:
+      74: -1750225502886092517
+    second: S2 Attack 3
+  - first:
+      74: -6116696228521716627
+    second: S2 Attack 2
+  - first:
+      74: -8342221483065717890
+    second: Stance 2
+  - first:
+      74: 9089900997378381883
+    second: S2 Transition
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Stance 2
+      takeName: Fighting Idle S2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 424
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: S2 Attack 1
+      takeName: Boxing S2 Full Edit
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.3751938
+        functionName: SlideDuration
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 9121143404cfb70449c69676614b99f7, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4914729
+        functionName: HandleAnimationSoundPass
+        data: S2 Attack 1
+        objectReferenceParameter: {fileID: 11500000, guid: 110c3b501456f3941957d226c5ca552c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flying Kick S2 Full Edit
+      takeName: Flying Kick S2 Full Edit
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.31937984
+        functionName: HandleAnimationSoundPass
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: S2 Attack 3
+      takeName: Roundhouse Kick S2 Full Edit
+      internalID: 0
+      firstFrame: 15
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.19379847
+        functionName: SlideDuration
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 9121143404cfb70449c69676614b99f7, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.92403096
+        functionName: SlideDuration
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 9121143404cfb70449c69676614b99f7, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.38449615
+        functionName: HandleAnimationSoundPass
+        data: S2 Attack 3
+        objectReferenceParameter: {fileID: 11500000, guid: 110c3b501456f3941957d226c5ca552c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: S2 Attack 2
+      takeName: Headbutt S2 Full Edit
+      internalID: 0
+      firstFrame: 7
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.20310076
+        functionName: SlideDuration
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 9121143404cfb70449c69676614b99f7, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8310078
+        functionName: SlideDuration
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 9121143404cfb70449c69676614b99f7, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2356589
+        functionName: HandleAnimationSoundPass
+        data: S2 Attack 2
+        objectReferenceParameter: {fileID: 11500000, guid: 110c3b501456f3941957d226c5ca552c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: S2 Transition
+      takeName: Fighting Idle S2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ac2bf86e265f0854f9d9c49023c85b1c, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
