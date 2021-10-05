@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-[RequireComponent(typeof(SwitchCameraOnEvent))]
 public class HitBox : MonoBehaviour
 {
     public HitBoxDefinition HitBoxDefinition { get; set; }
@@ -35,19 +34,57 @@ public class HitBox : MonoBehaviour
     void OnEnable()
     {
         GetHitBoxDefinition();
-        if (GetComponent<Collider>())
-            GetComponent<Collider>().isTrigger = true;
-        if (GetComponent<MeshRenderer>())
-            GetComponent<MeshRenderer>().enabled = false;
+        SetTriggerCollider();
+        DisableMeshRendererIfPresent();
+        AddSwitchCameraComponent();
+        FindComboGravityPoint();
+        ActivateComboGravityPointIfLinkSkill();
 
-        if (!GetComponent<SwitchCameraOnEvent>())
-            gameObject.AddComponent<SwitchCameraOnEvent>();
+        if (!GetComponent<TriggerStunAnimation>())
+            AddProperHitstunComponent();
+    }
 
-        _comboGravityPoint = transform.root.gameObject.transform.Find("Combo Gravity Point");
+    private void AddProperHitstunComponent()
+    {
+        if (HitBoxDefinition.StunType == StunType.HitStun)
+            gameObject.AddComponent<TriggerHitStunAnimation>();
 
+        if (HitBoxDefinition.StunType == StunType.KnockBack)
+            gameObject.AddComponent<TriggerKnockBackAnimation>();
+    }
+
+    private void ActivateComboGravityPointIfLinkSkill()
+    {
         if (HitBoxDefinition.SkillType == SkillType.LinkSkill && _comboGravityPoint != null)
             _comboGravityPoint.gameObject.SetActive(true);
+    }
 
+    private void FindComboGravityPoint()
+    {
+        _comboGravityPoint = transform.root.gameObject.transform.Find("Combo Gravity Point");
+    }
+
+    private void AddSwitchCameraComponent()
+    {
+        if (!GetComponent<SwitchCameraOnEvent>())
+            gameObject.AddComponent<SwitchCameraOnEvent>();
+    }
+
+    private void DisableMeshRendererIfPresent()
+    {
+        if (GetComponent<MeshRenderer>())
+            GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    private void SetTriggerCollider()
+    {
+        if (GetComponent<Collider>())
+            GetComponent<Collider>().isTrigger = true;
+        else
+        {
+            gameObject.AddComponent<Collider>();
+            GetComponent<Collider>().isTrigger = true;
+        }
     }
 
     private void GetHitBoxDefinition()
@@ -64,17 +101,25 @@ public class HitBox : MonoBehaviour
 
     void OnDisable()
     {
+        if (GetComponent<TriggerStunAnimation>())
+            RemoveStunTypeComponent();
+        
         _savedTargetID = 0;
-        HitBoxDefinition.SkillType = SkillType.LinkSkill;
 
         if (_comboGravityPoint != null)
             if (_comboGravityPoint.gameObject.activeInHierarchy)
                 _comboGravityPoint.gameObject.SetActive(false);
     }
 
+    private void RemoveStunTypeComponent()
+    {
+        Destroy(GetComponent<TriggerStunAnimation>());
+    }
+
     private void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, HitBoxDefinition.AttackRange, HitBoxDefinition.LayerMask);
+        Collider[] colliders =
+            Physics.OverlapSphere(transform.position, HitBoxDefinition.AttackRange, HitBoxDefinition.LayerMask);
 
         if (colliders == null)
             return;
@@ -122,7 +167,7 @@ public class HitBox : MonoBehaviour
         }
     }
 
-    
+
     private void OnDrawGizmosSelected()
     {
         if (HitBoxDefinition)
@@ -198,5 +243,4 @@ public class HitBox : MonoBehaviour
         _targetNavMesh = collider.GetComponent<NavMeshAgent>();
         _targetKnockBackHandler = collider.GetComponent<KnockBackHandler>();
     }
-
 }

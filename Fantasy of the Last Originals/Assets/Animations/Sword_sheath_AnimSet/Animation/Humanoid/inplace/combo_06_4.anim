@@ -23332,6 +23332,13 @@ AnimationClip:
     floatParameter: 0.3
     intParameter: 0
     messageOptions: 0
+  - time: 0.033333335
+    functionName: SetHitBoxDefinition
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 17cc74354d6ce004096f372c4a00ac7a, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.06666667
     functionName: HandleAnimationSoundPass
     data: S4 Attack 2
