@@ -40,8 +40,8 @@ public class HitBox : MonoBehaviour
         FindComboGravityPoint();
         ActivateComboGravityPointIfLinkSkill();
 
-        //if (!GetComponent<TriggerStunAnimation>())
-            //AddProperHitstunComponent();
+        if (!GetComponent<TriggerStunAnimation>())
+            AddProperHitstunComponent();
     }
 
     private void AddProperHitstunComponent()
@@ -101,8 +101,8 @@ public class HitBox : MonoBehaviour
 
     void OnDisable()
     {
-        //if (GetComponent<TriggerStunAnimation>())
-            //RemoveStunTypeComponent();
+        if (GetComponent<TriggerStunAnimation>())
+            RemoveStunTypeComponent();
         
         _savedTargetID = 0;
 
