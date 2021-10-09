@@ -1882,20 +1882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecb71f5b11633b43b6ca32c13102e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _damage: 30
-  _attackRange: 1
-  _knockBackStrength: 7
-  _knockUpStrength: 1
-  _airBorneKnockUp: 1
-  _launchLimiter: 1
-  _decelerationDuration: 2
-  _hitStopDuration: 0.001
-  _airStallDuration: 0.8
-  _skillType: 0
-  _comboGravityPoint: {fileID: 1600914754}
 --- !u!114 &-2247958522955548788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,6 +2275,7 @@ GameObject:
   - component: {fileID: 3669642708024087197}
   - component: {fileID: 1729835575}
   - component: {fileID: 1911037397}
+  - component: {fileID: 1112429338058564837}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -7310,8 +7297,15 @@ MonoBehaviour:
   _fallDecelerationMultiplier: 0
   _fallDecelerationNormalizer: 0
   _fallAccelerationNormalizer: 0.5
-  _isGrounded: 1
-  _skillType: 0
+  GroundCheck: {fileID: 0}
+  AttackTimer: 0
+  CurrentDownForce: 0
+  HitStopDuration: 0
+  AirStallDuration: 0
+  AirBorneKnockUp: 0
+  _ApplyKnockBackForce: 0
+  AirStall: 0
+  CanResetNavAgent: 0
 --- !u!114 &5769214997430329452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7384,6 +7378,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sphereYOffSet: 0
   _landingRadius: 4
+--- !u!114 &1112429338058564837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688188120052915403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e542d63be0f74f65ab47aef2b49888f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _feet: {fileID: 1447275211}
 --- !u!1 &6761636888401643418
 GameObject:
   m_ObjectHideFlags: 0

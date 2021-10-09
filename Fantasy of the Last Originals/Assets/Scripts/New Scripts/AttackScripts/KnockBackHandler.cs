@@ -1,27 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-enum EnemyState
-{
-    Idle,
-    Patrol,
-    Chase,
-    Attack,
-    Defend,
-    Hitstun,
-    Return,
-    Death
-
-}
 public class KnockBackHandler : MonoBehaviour
 {
     [SerializeField] LayerMask _groundLayerMask;
     [SerializeField] Transform _feet;
 
-    [Header("Gravity")]
-    [SerializeField] float _startDownPull = .6f;
+    [Header("Gravity")] [SerializeField] float _startDownPull = .6f;
     [SerializeField] float _downPull = 2f;
     [SerializeField] float _weight = .5f;
     [SerializeField] float _fallAccelerationMultiplier;
@@ -29,46 +17,49 @@ public class KnockBackHandler : MonoBehaviour
     [SerializeField] float _fallDecelerationNormalizer;
     [SerializeField] float _fallAccelerationNormalizer = .5f;
 
-    [SerializeField] bool _isGrounded = true;
-    [SerializeField] SkillType _skillType = SkillType.LinkSkill;
 
-    public bool IsGrounded { get { return _isGrounded; } }
+    private SkillType _targetSkillTypeUsed = SkillType.LinkSkill;
 
     NavMeshAgent _navMesh;
     Rigidbody _rb;
 
+    public GroundCheck _groundCheck;
+    public GroundCheck GroundCheck => _groundCheck;
+    
     EnemyDeathLogic _enemyDeathLogic;
     EnemyAI _enemyAI;
     Player _playerLogic;
     Animator _animator;
 
-    Vector3 _contactPointLaunchLimiter;
-    Vector3 _knockBackForce;
+    Vector3 ContactPointLaunchLimiter;
+    Vector3 KnockBackForce;
 
-    float _attackTimer;
-    float _currentDownForce;
-    float _hitStopDuration;
-    float _airStallDuration;
-    float _airBorneKnockUp;
+    public float AttackTimer;
+    public float CurrentDownForce;
+    public float HitStopDuration;
+    public float AirStallDuration;
+    public float AirBorneKnockUp;
 
-    bool _applyKnockBackForce;
-    bool _airStall;
+    public bool _ApplyKnockBackForce;
+    public bool AirStall;
     float _linkSkillKnockBack;
+    public bool CanResetNavAgent;
 
     // Start is called before the first frame update
     void Start()
     {
+        _groundCheck = GetComponent<GroundCheck>();
         _navMesh = GetComponent<NavMeshAgent>();
         _enemyAI = GetComponent<EnemyAI>();
         _playerLogic = GetComponent<Player>();
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
+
     // Update is called once per frame
     void Update()
     {
-        UpdateIsGrounded();
-        if (_isGrounded)
+        if (_groundCheck.UpdateIsGrounded())
         {
             _downPull = _startDownPull;
             if (_enemyAI != null)
@@ -78,79 +69,25 @@ public class KnockBackHandler : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_fallAccelerationMultiplier > 5f)
-            _fallAccelerationMultiplier = 5f;
-        if (_applyKnockBackForce)
+        LimitFallAccelerationMultiplier();
+        ApplyKnockBackForce();
+        if (!_groundCheck.UpdateIsGrounded())
         {
-            StartCoroutine(KnockBackAfterHitStop(_knockBackForce));
-        }
-        if (!_isGrounded)
-        {
-            if (_airStall)
+            ApplyAirStall();
+            if (_targetSkillTypeUsed == SkillType.LinkSkill)
             {
-                _fallAccelerationMultiplier = 0;
-                _fallDecelerationMultiplier = 0;
-                _currentDownForce = 0;
-                _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-                StartCoroutine(ResetAirStall(_airStallDuration));
+                ApplyLinkSkillForces();
             }
-            if (_skillType == SkillType.LinkSkill)
-            {
-                if (transform.position.y >= _contactPointLaunchLimiter.y)
-                {
-                    transform.position = new Vector3(transform.position.x, _contactPointLaunchLimiter.y - .1f, transform.position.z);
-
-                    _fallAccelerationMultiplier += Time.deltaTime * 10f;
-
-                    _currentDownForce = _downPull * _fallAccelerationMultiplier * ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
-
-                    if(_rb.velocity.z > 0)
-                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-                    if(_rb.velocity.z < 0)
-                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-
-                }
-                else if (transform.position.y < _contactPointLaunchLimiter.y)
-                {
-                    if (_rb.velocity.y > 0)
-                    {
-                        _fallAccelerationMultiplier += Time.deltaTime;
-
-                        _currentDownForce = _downPull * _fallAccelerationMultiplier * ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
-
-                        _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-
-                    }
-                    else if (_rb.velocity.y <= 0)
-                    {
-                        if (_fallAccelerationMultiplier > 2f)
-                        {
-                            _fallDecelerationMultiplier = 100f;
-                        }
-                        else
-                        {
-
-                            _fallDecelerationMultiplier = 0f;
-                        }
-                        _fallDecelerationMultiplier += Time.deltaTime * _weight;
-                        _currentDownForce -= Time.deltaTime * ((_fallDecelerationMultiplier * _fallDecelerationNormalizer) * _weight); //down force is going to decrease over time, and decrease more over time due to fallmult
-                        if (_currentDownForce < 0)
-                            _currentDownForce = 0f;
-                        _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-
-                    }
-                }
-            }
-            else if (_skillType != SkillType.LinkSkill)
+            else if (_targetSkillTypeUsed != SkillType.LinkSkill)
             {
                 if (_rb.velocity.y > 0)
                 {
                     _fallAccelerationMultiplier += Time.deltaTime;
 
-                    _currentDownForce = _downPull * _fallAccelerationMultiplier * ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
+                    CurrentDownForce = _downPull * _fallAccelerationMultiplier *
+                                       ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
 
-                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
-
+                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
                 }
                 else if (_rb.velocity.y <= 0)
                 {
@@ -160,15 +97,16 @@ public class KnockBackHandler : MonoBehaviour
                     }
                     else
                     {
-
                         _fallDecelerationMultiplier = 0f;
                     }
-                    _fallDecelerationMultiplier += Time.deltaTime * _weight;
-                    _currentDownForce -= Time.deltaTime * ((_fallDecelerationMultiplier * _fallDecelerationNormalizer) * _weight); //down force is going to decrease over time, and decrease more over time due to fallmult
-                    if (_currentDownForce < 0)
-                        _currentDownForce = 0f;
-                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
 
+                    _fallDecelerationMultiplier += Time.deltaTime * _weight;
+                    CurrentDownForce -= Time.deltaTime *
+                                        ((_fallDecelerationMultiplier * _fallDecelerationNormalizer) *
+                                         _weight); //down force is going to decrease over time, and decrease more over time due to fallmult
+                    if (CurrentDownForce < 0)
+                        CurrentDownForce = 0f;
+                    _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
                 }
             }
         }
@@ -176,9 +114,86 @@ public class KnockBackHandler : MonoBehaviour
         {
             _fallAccelerationMultiplier = 0;
             _fallDecelerationMultiplier = 0;
-            _currentDownForce = 0;
-            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - _currentDownForce, _rb.velocity.z);
+            CurrentDownForce = 0;
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
         }
+    }
+
+    private void ApplyLinkSkillForces()
+    {
+        if (transform.position.y >= ContactPointLaunchLimiter.y)
+        {
+            transform.position =
+                new Vector3(transform.position.x, ContactPointLaunchLimiter.y - .1f, transform.position.z);
+
+            _fallAccelerationMultiplier += Time.deltaTime * 10f;
+
+            CurrentDownForce = _downPull * _fallAccelerationMultiplier *
+                               ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
+
+            if (_rb.velocity.z > 0)
+                _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
+            if (_rb.velocity.z < 0)
+                _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
+        }
+        else if (transform.position.y < ContactPointLaunchLimiter.y)
+        {
+            if (_rb.velocity.y > 0)
+            {
+                _fallAccelerationMultiplier += Time.deltaTime;
+
+                CurrentDownForce = _downPull * _fallAccelerationMultiplier *
+                                   ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
+
+                _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
+            }
+            else if (_rb.velocity.y <= 0)
+            {
+                if (_fallAccelerationMultiplier > 2f)
+                {
+                    _fallDecelerationMultiplier = 100f;
+                }
+                else
+                {
+                    _fallDecelerationMultiplier = 0f;
+                }
+
+                _fallDecelerationMultiplier += Time.deltaTime * _weight;
+                CurrentDownForce -=
+                    Time.deltaTime *
+                    ((_fallDecelerationMultiplier * _fallDecelerationNormalizer) *
+                     _weight); //down force is going to decrease over time, and decrease more over time due to fallmult
+                if (CurrentDownForce < 0)
+                    CurrentDownForce = 0f;
+                _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
+            }
+        }
+    }
+
+    private void ApplyAirStall()
+    {
+        if (AirStall)
+        {
+            _fallAccelerationMultiplier = 0;
+            _fallDecelerationMultiplier = 0;
+            CurrentDownForce = 0;
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
+            StartCoroutine(ResetAirStall(AirStallDuration));
+        }
+    }
+
+    private void ApplyKnockBackForce()
+    {
+        if (_ApplyKnockBackForce)
+        {
+            StartCoroutine(KnockBackAfterHitStop(KnockBackForce));
+        }
+    }
+
+    private void LimitFallAccelerationMultiplier()
+    {
+        if (_fallAccelerationMultiplier > 5f)
+            _fallAccelerationMultiplier = 5f;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -189,24 +204,20 @@ public class KnockBackHandler : MonoBehaviour
         }
     }
 
-    public bool UpdateIsGrounded()
-    {
-        _isGrounded = Physics.CheckSphere(_feet.position, .1f, _groundLayerMask);
-        return _isGrounded;
-    }
     public void SetAirBorneKnockUp(float airBornKnockUp)
     {
-        _airBorneKnockUp = airBornKnockUp;
+        AirBorneKnockUp = airBornKnockUp;
     }
 
     public void SetLinkSkillKnockBack(float knockBack)
     {
         _linkSkillKnockBack = knockBack;
     }
+
     public void SetKnockBackPower(Vector3 attackForce)
     {
-        _knockBackForce = attackForce;
-        if(_skillType == SkillType.LinkSkill)
+        KnockBackForce = attackForce;
+        if (_targetSkillTypeUsed == SkillType.LinkSkill)
         {
             _linkSkillKnockBack = attackForce.z;
         }
@@ -214,14 +225,14 @@ public class KnockBackHandler : MonoBehaviour
 
     public void ApplyKnockBack(float hitStopDuration)
     {
-        _applyKnockBackForce = true;
-        _hitStopDuration = hitStopDuration;
+        _ApplyKnockBackForce = true;
+        HitStopDuration = hitStopDuration;
     }
 
     public void SetContactPoint(SkillType skillType, Vector3 contactPoint)
     {
-        _skillType = skillType;
-        _contactPointLaunchLimiter = contactPoint;
+        _targetSkillTypeUsed = skillType;
+        ContactPointLaunchLimiter = contactPoint;
     }
 
     public void SetNavMeshEnabled(bool enabled)
@@ -231,13 +242,13 @@ public class KnockBackHandler : MonoBehaviour
 
     public void SetAirStall(float airStallDuration)
     {
-        _airStall = true;
-        _airStallDuration = airStallDuration;
+        AirStall = true;
+        AirStallDuration = airStallDuration;
     }
 
     public void ResetDownForce()
     {
-        _currentDownForce = 0;
+        CurrentDownForce = 0;
     }
 
     public void SetDownPull(float downPull)
@@ -253,14 +264,15 @@ public class KnockBackHandler : MonoBehaviour
     IEnumerator ResetAirStall(float airStallDuration)
     {
         yield return new WaitForSeconds(airStallDuration);
-        _airStall = false;
+        AirStall = false;
     }
+
     IEnumerator KnockBackAfterHitStop(Vector3 knockBack)
     {
         _rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(_hitStopDuration);
-        _rb.velocity = _knockBackForce;
+        yield return new WaitForSeconds(HitStopDuration);
+        _rb.velocity = KnockBackForce;
 
-        _applyKnockBackForce = false;
+        _ApplyKnockBackForce = false;
     }
 }

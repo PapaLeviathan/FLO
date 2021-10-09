@@ -121,7 +121,7 @@ public class HitBox : MonoBehaviour
         Collider[] colliders =
             Physics.OverlapSphere(transform.position, HitBoxDefinition.AttackRange, HitBoxDefinition.LayerMask);
 
-        if (colliders == null)
+        if (colliders.Length == 0)
             return;
 
 
@@ -177,7 +177,7 @@ public class HitBox : MonoBehaviour
 
     private void HandleTargetKnockback(KnockBackHandler targetKnockBackHandler, Vector3 attackDirection)
     {
-        if (targetKnockBackHandler.UpdateIsGrounded())
+        if (targetKnockBackHandler._groundCheck.UpdateIsGrounded())
         {
             attackDirection.y = HitBoxDefinition.KnockUpStrength;
             _knockBackPower = new Vector3(attackDirection.x,

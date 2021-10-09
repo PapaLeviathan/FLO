@@ -24,7 +24,7 @@ public abstract class HandleFallingAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _animator.SetBool("Grounded", _knockBackHandler.UpdateIsGrounded());
+        _animator.SetBool("Grounded", _knockBackHandler._groundCheck.UpdateIsGrounded());
 
         if (!_animator.GetBool("Grounded"))
             _animator.SetFloat("Falling", _rb.velocity.y);

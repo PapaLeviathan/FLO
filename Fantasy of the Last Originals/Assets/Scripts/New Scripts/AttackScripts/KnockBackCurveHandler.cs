@@ -16,7 +16,7 @@ public class KnockBackCurveHandler : MonoBehaviour
     Vector3 _currentPosition;
     Vector3 _targetPosition;
     
-    KnockBackHandler _enemyLogic;
+    KnockBackHandler _knockBackHandler;
     Rigidbody _rb;
     NavMeshAgent _nav;
 
@@ -27,7 +27,7 @@ public class KnockBackCurveHandler : MonoBehaviour
     void Awake()
     {
         _nav = GetComponent<NavMeshAgent>();
-        _enemyLogic = GetComponent<KnockBackHandler>();
+        _knockBackHandler = GetComponent<KnockBackHandler>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -35,8 +35,8 @@ public class KnockBackCurveHandler : MonoBehaviour
     {
         if (_isInKnockBack) //if _stunTime is 2 seconds, this code while run for 2 seconds
         {
-            if (!_enemyLogic.UpdateIsGrounded())
-                _enemyLogic.SetDownPull(_enemyGravityResetValue);
+            if (!_knockBackHandler._groundCheck.UpdateIsGrounded())
+                _knockBackHandler.SetDownPull(_enemyGravityResetValue);
 
             _timeInTrajectory += Time.deltaTime;
             _trajectorySpeed = _trajectorySpeedCurve.Evaluate(_timeInTrajectory);

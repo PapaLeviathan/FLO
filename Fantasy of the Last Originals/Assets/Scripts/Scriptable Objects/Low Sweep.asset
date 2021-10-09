@@ -17,12 +17,12 @@ MonoBehaviour:
     m_Bits: 8
   SkillType: 0
   StunType: 1
-  Damage: 10
+  Damage: 25
   AttackRange: 0.5
-  KnockBackStrength: 1
-  KnockUpStrength: 1
+  KnockBackStrength: 2
+  KnockUpStrength: 3
   AirBorneKnockUp: 1
-  LaunchLimiter: 0.2
+  LaunchLimiter: 2
   DecelerationDuration: 1
   HitStopDuration: 0.01
   AirStallDuration: 0.01

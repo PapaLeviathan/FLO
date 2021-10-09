@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
             EnemyStateLogicHandler();
         }
         
-        else if (!_knockBackHandler.UpdateIsGrounded())
+        else if (!_knockBackHandler._groundCheck.UpdateIsGrounded())
         {
             _navMeshAgent.enabled = false;
         }
