@@ -5,69 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed09942b-f775-4a27-bdd0-350dfc8c4170" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/EnemyState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/EnemyState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/GroundCheck.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/GroundCheck.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/Attack.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/Attack.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/ChasePlayer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/ChasePlayer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/EntityStateMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/EntityStateMachine.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/Idle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/Idle.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/StateMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/State Machine/StateMachine.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/ToggleDistanceColliders.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/ToggleDistanceColliders.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Fantasy of the Last Originals/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Fantasy of the Last Originals/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemy Anims/Movement/Goblin.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemy Anims/Movement/Goblin.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Sword_sheath_AnimSet/Animation/Humanoid/inplace/combo_05_4.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Sword_sheath_AnimSet/Animation/Humanoid/inplace/combo_05_4.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Sword_sheath_AnimSet/Animation/Humanoid/inplace/combo_06_4.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Sword_sheath_AnimSet/Animation/Humanoid/inplace/combo_06_4.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animators/JamesAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animators/JamesAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cinemachine Assets/CamEventCaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cinemachine Assets/CamEventCaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cinemachine Assets/CameraSwitcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cinemachine Assets/CameraSwitcher.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Kioyu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Kioyu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Armada.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Armada.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Base Slash 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Base Slash 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Base Slash 2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Base Slash 2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Light Kick 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Light Kick 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Light Punch 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Light Punch 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Low Sweep.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Low Sweep.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Step Kick.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Step Kick.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HandleFallingAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HandleFallingAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackCurveHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackCurveHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerStunAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerStunAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AutoTargetEnemy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AutoTargetEnemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/RigidBodyRestraintControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/RigidBodyRestraintControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Entities/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Entities/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/FootPlatformLogic.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/FootPlatformLogic.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/GroundColliderLogic.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/GroundColliderLogic.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Idle1Behaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Idle1Behaviour.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/PlayerStateControl.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/PlayerStateControl.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/SetPlayerAnimationState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/SetPlayerAnimationState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/TurnWhileAttacking.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/TurnWhileAttacking.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/AutoTargetEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/AutoTargetEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/FootPlatformLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/FootPlatformLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Base Slash 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Base Slash 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Light Punch 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Light Punch 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Low Sweep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Low Sweep.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,12 +44,27 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/Behaviours/CinemachineSmoothPath.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/PostProcessing/CinemachinePostProcessing.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEditor.TestRunner/GUI/TestListBuilder/TestFilterSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.11.2/Tests/Editor/Collaborate/Models/TestSourceControlProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Editor/Editors/CinemachineSmoothPathEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CAFB29D5-2338-47FB-B4ED-CF8D7C32B1E3/6c/09fe7471/Single.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitStunTrue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.11.2/Editor/Collaborate/Models/StartModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/Impulse/CinemachineCollisionImpulseSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEngine.TestRunner/Utils/Utils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEngine.TestRunner/NUnitExtensions/Attributes/UnityTestAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEditor.TestRunner/GUI/TestListBuilder/TestFilterSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/Behaviours/CinemachineCollider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/State Machine/IState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CAFB29D5-2338-47FB-B4ED-CF8D7C32B1E3/6c/09fe7471/Single.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitsStunTrue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.29/UnityEngine.TestRunner/NUnitExtensions/Attributes/UnityPlatformAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/Core/CinemachinePathBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitStunFalse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../../../../Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DA6AB582-61CA-4BF8-8D22-45FA0B5E29FF/8d/3b87b55e/RigidbodyConstraints.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../../../../Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/EventSystem/GraphicRaycasterTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../../../../Program Files/Unity/Hub/Editor/2020.3.20f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/EventSystem/RaycastSortingTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/34/4ef303cd/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -99,19 +72,26 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/HealthLogic.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HandleFallingAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackCurveHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackHandler.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" />
       <option value="$PROJECT_DIR$/Assets/Plugins/UniVRM-0.81.0/UniVRM-0.81.0/Assets/VRM10/Runtime/IO/Model/MeshWriter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerKnockBackAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerHitStunAnimation.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/TriggerStunAnimation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/Entities/EnemyAI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/State Machine/IState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/State Machine/Idle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/State Machine/StateMachine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/State Machine/EntityStateMachine.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/HitStunBooleanManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitsStunTrue.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitsStunFalse.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/Entities/EnemyAI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitStunTrue.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Animator Behaviours/SetHitStunFalse.cs" />
+      <option value="$PROJECT_DIR$/Assets/Cinemachine Assets/CameraSwitcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/AutoTargetEnemy.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/HitBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/KnockBackHandler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/AttackScripts/RigidBodyRestraintControl.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/New Scripts/Player/FootPlatformLogic.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z4B3ILgY5TyEBKlcydajSI15d7" />
@@ -167,7 +147,7 @@
       <updated>1633397285626</updated>
       <workItem from="1633397298273" duration="3625000" />
       <workItem from="1633568131744" duration="3859000" />
-      <workItem from="1633803569477" duration="5664000" />
+      <workItem from="1633803569477" duration="13625000" />
     </task>
     <servers />
   </component>

@@ -23335,7 +23335,7 @@ AnimationClip:
   - time: 0.033333335
     functionName: SetHitBoxDefinition
     data: 
-    objectReferenceParameter: {fileID: 11400000, guid: 17cc74354d6ce004096f372c4a00ac7a, type: 2}
+    objectReferenceParameter: {fileID: 11400000, guid: 9ca2a997b2f999b498cd8ac63052be1f, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

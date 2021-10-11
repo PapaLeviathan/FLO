@@ -6,14 +6,12 @@ using Cinemachine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    [SerializeField] Transform _playerTransform;
-    [SerializeField] CinemachineManager _cinemachineManager;
     [SerializeField] CameraLogic _camLogic;
     [SerializeField] AutoTargetEnemy _targeter;
     
     Animator _animator;
     
-    public static bool _turnOnTargetCam = false;
+    public static bool TurnOnTargetCam = false;
 
     private void Awake()
     {
@@ -25,20 +23,15 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         SwitchState();
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Main Cam"))
-        {
-            
-        }
     }
 
     void SwitchState()
     {
-        if (_turnOnTargetCam)
+        if (TurnOnTargetCam)
         {
-            
             _camLogic._cameraZoom = 7f;
             _animator.Play("Multi Target Cam");
-            _turnOnTargetCam = false;
+            TurnOnTargetCam = false;
         }
 
         if (_targeter && _targeter.TargetedEnemy == null)

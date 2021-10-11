@@ -31,19 +31,21 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
     void Update()
     {
+        _navMeshAgent.enabled = !_animator.GetBool("IsInHitStun");
 
         if (_navMeshAgent.enabled && _playerTarget)
         {
             SetEnemyState();
             EnemyStateLogicHandler();
         }
-        
-        else if (!_knockBackHandler._groundCheck.UpdateIsGrounded())
-        {
-            _navMeshAgent.enabled = false;
-        }
+
+        // else if (!_knockBackHandler._groundCheck.UpdateIsGrounded())
+        // {
+        //     _navMeshAgent.enabled = false;
+        // }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -54,19 +56,20 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Ground")
-        {
-            _navMeshAgent.enabled = true;
-        }
-    }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.collider.tag == "Ground")
+    //     {
+    //         _navMeshAgent.enabled = true;
+    //     }
+    // }
 
-    
+
     public void SetIdle()
     {
         _enemyState = EnemyState.Idle;
     }
+
     void SetEnemyState()
     {
         float enemyToPlayerDistance = Vector3.Distance(transform.position, _playerTarget.position);
@@ -76,6 +79,7 @@ public class EnemyAI : MonoBehaviour
         {
             _enemyState = EnemyState.Death;
         }
+
         if (_enemyState != EnemyState.Death)
         {
             if (!_animator.IsInTransition(0) && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -145,7 +149,8 @@ public class EnemyAI : MonoBehaviour
 
         _navMeshAgent.isStopped = true;
         _animator.SetBool("Running", false);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerTarget.position - transform.position), 5f * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(_playerTarget.position - transform.position), 5f * Time.deltaTime);
 
         if (_attackTimer >= _attackDelay)
         {

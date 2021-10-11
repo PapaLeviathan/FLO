@@ -11,9 +11,9 @@ public class CamEventCaller : MonoBehaviour
         if (target == null)
             return;
 
-        if (CameraSwitcher._turnOnTargetCam == false)
+        if (CameraSwitcher.TurnOnTargetCam == false)
         {
-            CameraSwitcher._turnOnTargetCam = true;
+            CameraSwitcher.TurnOnTargetCam = true;
         }
     }
 }

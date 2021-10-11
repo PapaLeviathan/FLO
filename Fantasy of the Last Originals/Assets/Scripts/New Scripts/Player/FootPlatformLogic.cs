@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FootPlatformLogic : MonoBehaviour
 {
+    [SerializeField] private Transform _rootTransform;
+
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Sliding player back");
-
-        if (collider.CompareTag("Enemy"))
+        if (collider.CompareTag("Distance Collider"))
         {
-                transform.parent.parent.position -= Vector3.back;
+            _rootTransform.position -= Vector3.back;
         }
     }
 }

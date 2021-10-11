@@ -216,12 +216,12 @@ public class HitBox : MonoBehaviour
 
     private void ApplyKnockBack(KnockBackHandler targetKnockBack)
     {
-        targetKnockBack.SetKnockBackPower(_knockBackPower);
-        targetKnockBack.ResetDownForce();
-        targetKnockBack.SetAirStall(HitBoxDefinition.AirStallDuration);
         targetKnockBack.ApplyKnockBack(HitBoxDefinition.HitStopDuration);
+        targetKnockBack.AllowKnockBackToApply(_knockBackPower);
+        targetKnockBack.SetAirStall(HitBoxDefinition.AirStallDuration);
         targetKnockBack.SetAirBorneKnockUp(HitBoxDefinition.AirBorneKnockUp);
         targetKnockBack.SetContactPoint(HitBoxDefinition.SkillType, _comboPoint);
+        targetKnockBack.ResetDownForce();
     }
 
     void ApplyKnockBackDeceleration()

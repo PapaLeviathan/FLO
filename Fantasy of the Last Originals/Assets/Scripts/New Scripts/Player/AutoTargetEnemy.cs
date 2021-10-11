@@ -40,6 +40,7 @@ public class AutoTargetEnemy : MonoBehaviour
     {
         if (_targetedEnemy != null)
             Debug.DrawLine(transform.position, _targetedEnemy.transform.position, Color.yellow);
+        
         StoreEnemiesInArray();
         FindNearestEnemy();
         CreateEnemyDetectingRay();

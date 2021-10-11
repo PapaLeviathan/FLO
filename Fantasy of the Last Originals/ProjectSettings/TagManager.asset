@@ -10,6 +10,7 @@ TagManager:
   - Foot
   - Hand
   - Combo Gravity Point
+  - Distance Collider
   layers:
   - Default
   - TransparentFX

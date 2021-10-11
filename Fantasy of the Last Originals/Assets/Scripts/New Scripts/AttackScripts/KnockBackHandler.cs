@@ -9,7 +9,8 @@ public class KnockBackHandler : MonoBehaviour
     [SerializeField] LayerMask _groundLayerMask;
     [SerializeField] Transform _feet;
 
-    [Header("Gravity")] [SerializeField] float _startDownPull = .6f;
+    [Header("Gravity")]
+    [SerializeField] float _startDownPull = .6f;
     [SerializeField] float _downPull = 2f;
     [SerializeField] float _weight = .5f;
     [SerializeField] float _fallAccelerationMultiplier;
@@ -18,7 +19,7 @@ public class KnockBackHandler : MonoBehaviour
     [SerializeField] float _fallAccelerationNormalizer = .5f;
 
 
-    private SkillType _targetSkillTypeUsed = SkillType.LinkSkill;
+    private SkillType _targetSkillTypeUsed;
 
     NavMeshAgent _navMesh;
     Rigidbody _rb;
@@ -44,6 +45,9 @@ public class KnockBackHandler : MonoBehaviour
     public bool AirStall;
     float _linkSkillKnockBack;
     public bool CanResetNavAgent;
+    private bool IsRaising => _rb.velocity.y > 0;
+
+    private bool IsFalling => _rb.velocity.y <= 0;
 
     // Start is called before the first frame update
     void Start()
@@ -80,30 +84,25 @@ public class KnockBackHandler : MonoBehaviour
             }
             else if (_targetSkillTypeUsed != SkillType.LinkSkill)
             {
-                if (_rb.velocity.y > 0)
+                if (IsRaising)
                 {
-                    _fallAccelerationMultiplier += Time.deltaTime;
+                    _fallAccelerationMultiplier += Time.deltaTime * 4f;
 
-                    CurrentDownForce = _downPull * _fallAccelerationMultiplier *
+                    CurrentDownForce =  _fallAccelerationMultiplier *
                                        ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
-
+                    
                     _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
                 }
-                else if (_rb.velocity.y <= 0)
+                else if (IsFalling)
                 {
-                    if (_fallAccelerationMultiplier > 2f)
-                    {
-                        _fallDecelerationMultiplier = 100f;
-                    }
-                    else
-                    {
-                        _fallDecelerationMultiplier = 0f;
-                    }
-
                     _fallDecelerationMultiplier += Time.deltaTime * _weight;
-                    CurrentDownForce -= Time.deltaTime *
+                    
+                    CurrentDownForce += Time.deltaTime *
                                         ((_fallDecelerationMultiplier * _fallDecelerationNormalizer) *
                                          _weight); //down force is going to decrease over time, and decrease more over time due to fallmult
+                    if (CurrentDownForce > 8)
+                        CurrentDownForce = 8;
+                    
                     if (CurrentDownForce < 0)
                         CurrentDownForce = 0f;
                     _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
@@ -119,6 +118,7 @@ public class KnockBackHandler : MonoBehaviour
         }
     }
 
+
     private void ApplyLinkSkillForces()
     {
         if (transform.position.y >= ContactPointLaunchLimiter.y)
@@ -126,7 +126,7 @@ public class KnockBackHandler : MonoBehaviour
             transform.position =
                 new Vector3(transform.position.x, ContactPointLaunchLimiter.y - .1f, transform.position.z);
 
-            _fallAccelerationMultiplier += Time.deltaTime * 10f;
+            _fallAccelerationMultiplier += Time.deltaTime * 3f;
 
             CurrentDownForce = _downPull * _fallAccelerationMultiplier *
                                ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
@@ -138,16 +138,16 @@ public class KnockBackHandler : MonoBehaviour
         }
         else if (transform.position.y < ContactPointLaunchLimiter.y)
         {
-            if (_rb.velocity.y > 0)
+            if (IsRaising)
             {
                 _fallAccelerationMultiplier += Time.deltaTime;
 
-                CurrentDownForce = _downPull * _fallAccelerationMultiplier *
+                CurrentDownForce =  _fallAccelerationMultiplier *
                                    ((_fallAccelerationMultiplier * _fallAccelerationNormalizer) * _weight);
 
                 _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y - CurrentDownForce, _rb.velocity.z);
             }
-            else if (_rb.velocity.y <= 0)
+            else if (IsFalling)
             {
                 if (_fallAccelerationMultiplier > 2f)
                 {
@@ -214,7 +214,7 @@ public class KnockBackHandler : MonoBehaviour
         _linkSkillKnockBack = knockBack;
     }
 
-    public void SetKnockBackPower(Vector3 attackForce)
+    public void AllowKnockBackToApply(Vector3 attackForce)
     {
         KnockBackForce = attackForce;
         if (_targetSkillTypeUsed == SkillType.LinkSkill)
