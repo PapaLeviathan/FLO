@@ -16,14 +16,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   SkillType: 0
-  StunType: 0
+  StunType: 1
   Damage: 5
-  AttackRange: 0.5
-  KnockBackStrength: 1
-  KnockUpStrength: 0
+  AttackRange: 1
+  KnockBackStrength: 2
+  KnockUpStrength: 2
   AirBorneKnockUp: 1
-  LaunchLimiter: 0.2
+  LaunchLimiter: 2
   DecelerationDuration: 1
   HitStopDuration: 0.01
   AirStallDuration: 0.01
   HitBoxLinger: 0.2
+  Effect: {fileID: 1840690549904964, guid: a8a6ba91edbeef2439175ecf0e08e6fb, type: 3}
+  EffectPosition: {x: 8.808121, y: 0.6156292, z: -22.33541}
+  EffectRotation: {x: -0.0792343, y: -0.5251367, z: -0.12641266, w: 0.8378384}
+  EffectScale: {x: 5.632228, y: -24.81459, z: 70.87315}

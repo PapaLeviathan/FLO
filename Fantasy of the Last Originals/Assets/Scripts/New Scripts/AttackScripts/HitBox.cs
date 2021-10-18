@@ -7,7 +7,8 @@ using UnityEngine.AI;
 
 public class HitBox : MonoBehaviour
 {
-    public HitBoxDefinition HitBoxDefinition { get; set; }
+    public AttackDefinition AttackDefinition { get; set; }
+    public Transform EffectPosition;
 
     private Transform _comboGravityPoint;
 
@@ -28,7 +29,7 @@ public class HitBox : MonoBehaviour
     private NavMeshAgent _targetNavMesh;
     private KnockBackHandler _targetKnockBackHandler;
     private Player _playerLogic;
-    private HitBoxManager _hitBoxManager;
+    private AttackDefinitionManager _attackDefinitionManager;
 
 
     void OnEnable()
@@ -46,16 +47,16 @@ public class HitBox : MonoBehaviour
 
     private void AddProperHitstunComponent()
     {
-        if (HitBoxDefinition.StunType == StunType.HitStun)
+        if (AttackDefinition.StunType == StunType.HitStun)
             gameObject.AddComponent<TriggerHitStunAnimation>();
 
-        if (HitBoxDefinition.StunType == StunType.KnockBack)
+        if (AttackDefinition.StunType == StunType.KnockBack)
             gameObject.AddComponent<TriggerKnockBackAnimation>();
     }
 
     private void ActivateComboGravityPointIfLinkSkill()
     {
-        if (HitBoxDefinition.SkillType == SkillType.LinkSkill && _comboGravityPoint != null)
+        if (AttackDefinition.SkillType == SkillType.LinkSkill && _comboGravityPoint != null)
             _comboGravityPoint.gameObject.SetActive(true);
     }
 
@@ -89,20 +90,20 @@ public class HitBox : MonoBehaviour
 
     private void GetHitBoxDefinition()
     {
-        _hitBoxManager = GetComponentInParent<HitBoxManager>();
-        HitBoxDefinition = _hitBoxManager.CurrentHitBoxDefinition;
+        _attackDefinitionManager = GetComponentInParent<AttackDefinitionManager>();
+        AttackDefinition = _attackDefinitionManager.CurrentAttackDefinition;
     }
 
     private IEnumerator DeactivateSelf()
     {
-        yield return new WaitForSeconds(HitBoxDefinition.HitBoxLinger);
+        yield return new WaitForSeconds(AttackDefinition.HitBoxLinger);
         gameObject.SetActive(false);
     }
 
     void OnDisable()
     {
-        if (GetComponent<TriggerStunAnimation>())
-            RemoveStunTypeComponent();
+        //if (GetComponent<TriggerStunAnimation>())
+        //    RemoveStunTypeComponent();
         
         _savedTargetID = 0;
 
@@ -119,7 +120,7 @@ public class HitBox : MonoBehaviour
     private void Update()
     {
         Collider[] colliders =
-            Physics.OverlapSphere(transform.position, HitBoxDefinition.AttackRange, HitBoxDefinition.LayerMask);
+            Physics.OverlapSphere(transform.position, AttackDefinition.AttackRange, AttackDefinition.LayerMask);
 
         if (colliders.Length == 0)
             return;
@@ -170,8 +171,8 @@ public class HitBox : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (HitBoxDefinition)
-            Gizmos.DrawSphere(transform.position, HitBoxDefinition.AttackRange);
+        if (AttackDefinition)
+            Gizmos.DrawSphere(transform.position, AttackDefinition.AttackRange);
         Gizmos.color = Color.red;
     }
 
@@ -179,16 +180,16 @@ public class HitBox : MonoBehaviour
     {
         if (targetKnockBackHandler._groundCheck.UpdateIsGrounded())
         {
-            attackDirection.y = HitBoxDefinition.KnockUpStrength;
+            attackDirection.y = AttackDefinition.KnockUpStrength;
             _knockBackPower = new Vector3(attackDirection.x,
-                (attackDirection.y + HitBoxDefinition.KnockUpStrength) * HitBoxDefinition.KnockUpStrength,
-                attackDirection.z * HitBoxDefinition.KnockBackStrength);
+                (attackDirection.y + AttackDefinition.KnockUpStrength) * AttackDefinition.KnockUpStrength,
+                attackDirection.z * AttackDefinition.KnockBackStrength);
         }
         else
         {
             attackDirection.y = 0;
-            _knockBackPower = new Vector3(attackDirection.x, attackDirection.y + HitBoxDefinition.AirBorneKnockUp,
-                attackDirection.z * HitBoxDefinition.KnockBackStrength);
+            _knockBackPower = new Vector3(attackDirection.x, attackDirection.y + AttackDefinition.AirBorneKnockUp,
+                attackDirection.z * AttackDefinition.KnockBackStrength);
         }
     }
 
@@ -203,24 +204,24 @@ public class HitBox : MonoBehaviour
 
     private void CheckSkillType()
     {
-        if (HitBoxDefinition.SkillType == SkillType.LinkSkill)
+        if (AttackDefinition.SkillType == SkillType.LinkSkill)
             _comboPoint = new Vector3(_comboGravityPoint.transform.position.x,
-                _comboGravityPoint.transform.position.y + HitBoxDefinition.LaunchLimiter,
+                _comboGravityPoint.transform.position.y + AttackDefinition.LaunchLimiter,
                 _comboGravityPoint.transform.position.z);
     }
 
     private void DoDamage()
     {
-        _targetHealthLogic.TakeDamage(HitBoxDefinition.Damage);
+        _targetHealthLogic.TakeDamage(AttackDefinition.Damage);
     }
 
     private void ApplyKnockBack(KnockBackHandler targetKnockBack)
     {
-        targetKnockBack.ApplyKnockBack(HitBoxDefinition.HitStopDuration);
+        targetKnockBack.ApplyKnockBack(AttackDefinition.HitStopDuration);
         targetKnockBack.AllowKnockBackToApply(_knockBackPower);
-        targetKnockBack.SetAirStall(HitBoxDefinition.AirStallDuration);
-        targetKnockBack.SetAirBorneKnockUp(HitBoxDefinition.AirBorneKnockUp);
-        targetKnockBack.SetContactPoint(HitBoxDefinition.SkillType, _comboPoint);
+        targetKnockBack.SetAirStall(AttackDefinition.AirStallDuration);
+        targetKnockBack.SetAirBorneKnockUp(AttackDefinition.AirBorneKnockUp);
+        targetKnockBack.SetContactPoint(AttackDefinition.SkillType, _comboPoint);
         targetKnockBack.ResetDownForce();
     }
 
@@ -229,8 +230,8 @@ public class HitBox : MonoBehaviour
         if (_knockBackDecelarationHandler != null)
         {
             _knockBackDecelarationHandler.SetKnockBackTrue(true);
-            _knockBackDecelarationHandler.SetKnockBackDeceleration(HitBoxDefinition.KnockBackStrength);
-            _knockBackDecelarationHandler.SetDecelerationDuration(HitBoxDefinition.DecelerationDuration);
+            _knockBackDecelarationHandler.SetKnockBackDeceleration(AttackDefinition.KnockBackStrength);
+            _knockBackDecelarationHandler.SetDecelerationDuration(AttackDefinition.DecelerationDuration);
         }
     }
 

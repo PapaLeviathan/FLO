@@ -20,6 +20,7 @@ public class RigidBodyRestraintControl : MonoBehaviour
         var enemyTargeter = GetComponent<AutoTargetEnemy>();
         var rigidBody = GetComponent<Rigidbody>();
         var animator = GetComponent<Animator>();
+        
         if (enemyTargeter.Enemy != null)
         {
             if (Vector3.Distance(transform.position, enemyTargeter.Enemy.transform.position) <= _closestTargetingDistance && enemyTargeter.Enemy.GetComponent<EnemyDeathLogic>().Died == false)

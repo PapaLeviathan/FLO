@@ -23329,11 +23329,11 @@ AnimationClip:
     functionName: SlideDuration
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.3
+    floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
-  - time: 0.033333335
-    functionName: SetHitBoxDefinition
+  - time: 0
+    functionName: SetAttackDefinition
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: 9ca2a997b2f999b498cd8ac63052be1f, type: 2}
     floatParameter: 0
@@ -23342,6 +23342,13 @@ AnimationClip:
   - time: 0.06666667
     functionName: HandleAnimationSoundPass
     data: S4 Attack 2
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: PlayVFX
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

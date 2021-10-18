@@ -7,5 +7,5 @@ using UnityEngine;
 public class ClipDefinition : ScriptableObject
 {
     [SerializeField] private AnimationClip _clip;
-    [SerializeField] private HitBoxDefinition _hitBoxDefinition;
+    [SerializeField] private AttackDefinition attackDefinition;
 }

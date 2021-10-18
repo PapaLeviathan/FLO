@@ -21530,7 +21530,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.016666668
-    functionName: SetHitBoxDefinition
+    functionName: SetAttackDefinition
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: 9ad80d8941be96645a7908b7dc80c4ae, type: 2}
     floatParameter: 0
