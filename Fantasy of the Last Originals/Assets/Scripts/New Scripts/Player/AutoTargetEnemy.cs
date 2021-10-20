@@ -20,6 +20,7 @@ public class AutoTargetEnemy : MonoBehaviour
     public GameObject NearestEnemy { get { return _nearestEnemy; } }
     public GameObject TargetedEnemy { get { return _targetedEnemy; } }
 
+    public bool EnemyInRange => Vector3.Distance(transform.position, _targetedEnemy.transform.position) <= _targetDistance;
     public bool _canTargetNearestEnemy;
     float _enemyDistance;
     bool _targetedWithRay;

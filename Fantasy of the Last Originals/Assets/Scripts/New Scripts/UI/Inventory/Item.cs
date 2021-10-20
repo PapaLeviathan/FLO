@@ -8,13 +8,12 @@ public class Item : MonoBehaviour
 
     [SerializeField] private Sprite _icon;
     [SerializeField] private SlotType _slotType;
-    
+
     protected Player _player;
-    protected bool _wasEquipped;
-    
     public Sprite Icon => _icon;
     public SlotType SlotType => _slotType;
     public bool WasPickedUp { get; set; }
+    public bool WasEquipped { get; set; }
 
     void Awake()
     {

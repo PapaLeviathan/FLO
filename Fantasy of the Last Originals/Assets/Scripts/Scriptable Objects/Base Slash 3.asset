@@ -21,13 +21,11 @@ MonoBehaviour:
   AttackRange: 1
   KnockBackStrength: 5.13
   KnockUpStrength: 2
+  StunDuration: 0.3
   AirBorneKnockUp: 1
-  LaunchLimiter: 0.2
+  LaunchLimiter: 1
   DecelerationDuration: 1
   HitStopDuration: 0.01
   AirStallDuration: 0.01
   HitBoxLinger: 0.2
   Effect: {fileID: 1840690549904964, guid: a8a6ba91edbeef2439175ecf0e08e6fb, type: 3}
-  EffectPosition: {x: 0, y: 0, z: 0}
-  EffectRotation: {x: 0, y: 0, z: 0, w: 0}
-  EffectScale: {x: 0, y: 0, z: 0}

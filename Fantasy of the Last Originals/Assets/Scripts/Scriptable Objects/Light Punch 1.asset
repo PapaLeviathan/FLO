@@ -15,15 +15,17 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 8
-  SkillType: 0
+  SkillType: 1
   StunType: 0
   Damage: 10
-  AttackRange: 0.5
+  AttackRange: 1
   KnockBackStrength: 1
   KnockUpStrength: 0
+  StunDuration: 0.3
   AirBorneKnockUp: 1
   LaunchLimiter: 0.2
   DecelerationDuration: 1
   HitStopDuration: 0.01
   AirStallDuration: 0.01
   HitBoxLinger: 0.2
+  Effect: {fileID: 0}

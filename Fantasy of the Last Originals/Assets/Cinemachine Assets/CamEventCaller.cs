@@ -7,7 +7,7 @@ public class CamEventCaller : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        var target = other.GetComponent<KnockBackHandler>();
+        var target = other.GetComponent<StunHandler>();
         if (target == null)
             return;
 

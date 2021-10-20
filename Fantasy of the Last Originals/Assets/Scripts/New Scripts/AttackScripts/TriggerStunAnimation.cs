@@ -6,11 +6,5 @@ using UnityEngine;
 
 public abstract class TriggerStunAnimation : MonoBehaviour
 {
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Animator>())
-            TriggerAnimation(other);
-    }
-
-    protected abstract void TriggerAnimation(Collider collider);
+    public abstract void TriggerAnimation(Collider collider);
 }

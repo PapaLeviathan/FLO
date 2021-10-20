@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public event Action<Item> ItemPickedUp;
 
     [SerializeField] Transform _rightHand;
+    [SerializeField] private Transform _scabbard;
     [SerializeField] private Transform _sheathRoot;
 
     private Item[] _items = new Item[DEFAULT_INVENTORY_SIZE];
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
     public Item ActiveItem { get; private set; }
     public List<Item> Items => _items.ToList();
     public int Count => _items.Count(t => t != null);
+    public Weapon ActiveWeapon { get; set; }
 
 
     private void Awake()
@@ -125,16 +127,17 @@ public class Inventory : MonoBehaviour
         item.transform.SetParent(_rightHand);
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
-
+        item.WasEquipped = true;
         ActiveItem = item;
     }
 
-    private void EquipWeapon(Item item)
+    public void UnSheathWeapon(Item item)
     {
         item.transform.SetParent(_rightHand);
-        ActiveItem = item;
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
     }
-
+    
     public void SheathWeapon(Item item)
     {
         item.transform.SetParent(_sheathRoot);

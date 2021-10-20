@@ -12,7 +12,7 @@ public class UIInventoryPanel : MonoBehaviour
     
     private Inventory _inventory;
     public UIInventorySlot[] Slots;
-
+    public Inventory Inventory => _inventory;
     public int SlotCount => Slots.Length;
     
     public UIInventorySlot Selected { get; set; }

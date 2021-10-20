@@ -12,7 +12,7 @@ public class EnemyDeathLogic : MonoBehaviour
     HealthLogic _healthLogic;
     ImpactSoundHandler _enemySoundHandler;
     DropExperience _dropExperienceHandler;
-    KnockBackHandler _enemyLogic;
+    StunHandler _enemyLogic;
 
     bool _died = false;
     public bool Died { get { return _died; } }
@@ -21,7 +21,7 @@ public class EnemyDeathLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _enemyLogic = GetComponent<KnockBackHandler>();
+        _enemyLogic = GetComponent<StunHandler>();
         _dropExperienceHandler = GetComponent<DropExperience>();
         _enemySoundHandler = GetComponent<ImpactSoundHandler>();
         _healthLogic = GetComponent<HealthLogic>();

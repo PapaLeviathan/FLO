@@ -9,34 +9,38 @@ public class RigidBodyRestraintControl : MonoBehaviour
     [SerializeField] float _closestTargetingDistance = 4f;
 
     private ToggleDistanceColliders _toggleDistanceColliders;
+    private AutoTargetEnemy _enemyTargeter;
+    private Rigidbody _rigidBody;
+    private Animator _animator;
+    
 
     private void Start()
     {
         _toggleDistanceColliders = GetComponent<ToggleDistanceColliders>();
+        _enemyTargeter = GetComponent<AutoTargetEnemy>();
+        _rigidBody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        var enemyTargeter = GetComponent<AutoTargetEnemy>();
-        var rigidBody = GetComponent<Rigidbody>();
-        var animator = GetComponent<Animator>();
         
-        if (enemyTargeter.Enemy != null)
+        if (_enemyTargeter.Enemy != null)
         {
-            if (Vector3.Distance(transform.position, enemyTargeter.Enemy.transform.position) <= _closestTargetingDistance && enemyTargeter.Enemy.GetComponent<EnemyDeathLogic>().Died == false)
+            if (_enemyTargeter.EnemyInRange && _enemyTargeter.Enemy.GetComponent<EnemyDeathLogic>().Died == false)
             {
                 _toggleDistanceColliders.ToggleDistanceCollidersTrue();
                 
-                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
+                if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
                 {
-                    rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY
+                    _rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY
                     | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
                 }
             }
-            else if(enemyTargeter.Enemy.GetComponent<EnemyDeathLogic>().Died == true)
+            else if(_enemyTargeter.Enemy.GetComponent<EnemyDeathLogic>().Died == true)
             {
                 _toggleDistanceColliders.ToggleDistanceCollidersFalse();
-                rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY
+                _rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY
                                                                              | RigidbodyConstraints.FreezeRotationZ;
             }
             else
@@ -47,7 +51,7 @@ public class RigidBodyRestraintControl : MonoBehaviour
 
     }
 
-    
+
 
     void OnTriggerEnter(Collider other)
     {

@@ -15,18 +15,19 @@ public class EnemyAI : MonoBehaviour
     Vector3 _initialPosition;
     NavMeshAgent _navMeshAgent;
 
-    KnockBackHandler _knockBackHandler;
+    StunHandler _stunHandler;
     Animator _animator;
     EnemyDeathLogic _enemyDeathLogic;
 
     float _attackTimer;
+    private bool _canResetNavMesh;
 
     IEnumerator Start()
     {
         _initialPosition = transform.position;
         _enemyDeathLogic = GetComponent<EnemyDeathLogic>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _knockBackHandler = GetComponent<KnockBackHandler>();
+        _stunHandler = GetComponent<StunHandler>();
         _animator = GetComponent<Animator>();
         yield return new WaitForSeconds(1f);
         _playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
@@ -34,18 +35,11 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        _navMeshAgent.enabled = !_animator.GetBool("IsInHitStun");
-
-        if (_navMeshAgent.enabled && _playerTarget)
+        if (_navMeshAgent.isActiveAndEnabled && _playerTarget)
         {
             SetEnemyState();
             EnemyStateLogicHandler();
         }
-
-        // else if (!_knockBackHandler._groundCheck.UpdateIsGrounded())
-        // {
-        //     _navMeshAgent.enabled = false;
-        // }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -55,14 +49,6 @@ public class EnemyAI : MonoBehaviour
             _enemyState = EnemyState.Hitstun;
         }
     }
-
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.collider.tag == "Ground")
-    //     {
-    //         _navMeshAgent.enabled = true;
-    //     }
-    // }
 
 
     public void SetIdle()

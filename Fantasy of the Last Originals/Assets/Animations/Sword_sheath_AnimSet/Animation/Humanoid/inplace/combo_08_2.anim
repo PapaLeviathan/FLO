@@ -20440,7 +20440,7 @@ AnimationClip:
     functionName: SlideDuration
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.1
+    floatParameter: 0.3
     intParameter: 0
     messageOptions: 0
   - time: 0
@@ -20458,9 +20458,9 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.033333335
-    functionName: SetDefinitionEffectPosition
+    functionName: SetActiveWeaponHitBox
     data: 
-    objectReferenceParameter: {fileID: 11400000, guid: 75839d0062a60ec4fa6580720d349ae2, type: 2}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -20468,6 +20468,13 @@ AnimationClip:
     functionName: PlayVFX
     data: 
     objectReferenceParameter: {fileID: 1840690549904964, guid: a8a6ba91edbeef2439175ecf0e08e6fb, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.26666668
+    functionName: SetActiveWeaponHitBox
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

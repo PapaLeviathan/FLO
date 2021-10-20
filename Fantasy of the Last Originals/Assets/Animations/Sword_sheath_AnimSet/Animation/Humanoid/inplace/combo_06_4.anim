@@ -23329,13 +23329,20 @@ AnimationClip:
     functionName: SlideDuration
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.1
+    floatParameter: 0.3
     intParameter: 0
     messageOptions: 0
   - time: 0
     functionName: SetAttackDefinition
     data: 
     objectReferenceParameter: {fileID: 11400000, guid: 9ca2a997b2f999b498cd8ac63052be1f, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.033333335
+    functionName: SetActiveWeaponHitBox
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
@@ -23348,6 +23355,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.13333334
     functionName: PlayVFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.26666668
+    functionName: SetActiveWeaponHitBox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TriggerHitStunAnimation : TriggerStunAnimation
 {
-    protected override void TriggerAnimation(Collider collider)
+    public override void TriggerAnimation(Collider collider)
     {
             collider.GetComponent<Animator>().SetTrigger("Hit Stun");
     }

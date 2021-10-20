@@ -27,7 +27,7 @@ public class HitBox : MonoBehaviour
     private Vector3 _attackDirection;
     private ImpactSoundHandler _targetSound;
     private NavMeshAgent _targetNavMesh;
-    private KnockBackHandler _targetKnockBackHandler;
+    private StunHandler _targetStunHandler;
     private Player _playerLogic;
     private AttackDefinitionManager _attackDefinitionManager;
 
@@ -35,12 +35,14 @@ public class HitBox : MonoBehaviour
     void OnEnable()
     {
         GetHitBoxDefinition();
-        SetTriggerCollider();
         DisableMeshRendererIfPresent();
         AddSwitchCameraComponent();
         FindComboGravityPoint();
         ActivateComboGravityPointIfLinkSkill();
 
+        gameObject.transform.localScale = new Vector3(AttackDefinition.AttackRange + .1f,
+            AttackDefinition.AttackRange + .1f,
+            AttackDefinition.AttackRange + .1f);
         if (!GetComponent<TriggerStunAnimation>())
             AddProperHitstunComponent();
     }
@@ -102,9 +104,9 @@ public class HitBox : MonoBehaviour
 
     void OnDisable()
     {
-        //if (GetComponent<TriggerStunAnimation>())
-        //    RemoveStunTypeComponent();
-        
+        if (GetComponent<TriggerStunAnimation>())
+            RemoveStunTypeComponent();
+
         _savedTargetID = 0;
 
         if (_comboGravityPoint != null)
@@ -117,7 +119,7 @@ public class HitBox : MonoBehaviour
         Destroy(GetComponent<TriggerStunAnimation>());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Collider[] colliders =
             Physics.OverlapSphere(transform.position, AttackDefinition.AttackRange, AttackDefinition.LayerMask);
@@ -128,7 +130,9 @@ public class HitBox : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            CacheTargetComponents(collider);
+            if (collider.isTrigger)
+                return;
+
 
             _newTargetID = collider.GetInstanceID();
 
@@ -138,34 +142,37 @@ public class HitBox : MonoBehaviour
                 return;
             }
 
+            CacheTargetComponents(collider);
+            GetComponent<TriggerStunAnimation>().TriggerAnimation(collider);
             _savedTargetID = _newTargetID;
+            _targetStunHandler.DisableNavMesh();
 
-            _attackDirection = collider.transform.position - transform.root.position;
-
-           CheckSkillType();
-            DoDamage();
-
-            _playerLogic = collider.GetComponent<Player>();
-
-            if (_playerLogic != null)
-            {
-                _playerLogic.enabled = false;
-            }
-
-            if (_targetNavMesh != null)
-            {
-                _targetNavMesh.enabled = false;
-            }
-
-            _targetSound.PlayHitStunSound();
-
-            ChangeRigidBodySettings();
-
-            HandleTargetKnockback(_targetKnockBackHandler, _attackDirection);
-
-            ApplyKnockBack(_targetKnockBackHandler);
-            ApplyKnockBackDeceleration();
+            TransferInfoToTarget(collider);
         }
+    }
+
+    private void TransferInfoToTarget(Collider collider)
+    {
+        _attackDirection = collider.transform.position - transform.root.position;
+
+        CheckSkillType();
+        DoDamage();
+
+        _playerLogic = collider.GetComponent<Player>();
+
+        if (_playerLogic != null)
+        {
+            _playerLogic.enabled = false;
+        }
+
+        _targetSound.PlayHitStunSound();
+
+        ChangeRigidBodySettings();
+
+        HandleTargetKnockback(_targetStunHandler, _attackDirection);
+
+        ApplyKnockBack(_targetStunHandler);
+        ApplyKnockBackDeceleration();
     }
 
 
@@ -176,9 +183,9 @@ public class HitBox : MonoBehaviour
         Gizmos.color = Color.red;
     }
 
-    private void HandleTargetKnockback(KnockBackHandler targetKnockBackHandler, Vector3 attackDirection)
+    private void HandleTargetKnockback(StunHandler targetStunHandler, Vector3 attackDirection)
     {
-        if (targetKnockBackHandler._groundCheck.UpdateIsGrounded())
+        if (targetStunHandler._groundCheck.UpdateIsGrounded())
         {
             attackDirection.y = AttackDefinition.KnockUpStrength;
             _knockBackPower = new Vector3(attackDirection.x,
@@ -215,14 +222,15 @@ public class HitBox : MonoBehaviour
         _targetHealthLogic.TakeDamage(AttackDefinition.Damage);
     }
 
-    private void ApplyKnockBack(KnockBackHandler targetKnockBack)
+    private void ApplyKnockBack(StunHandler targetStun)
     {
-        targetKnockBack.ApplyKnockBack(AttackDefinition.HitStopDuration);
-        targetKnockBack.AllowKnockBackToApply(_knockBackPower);
-        targetKnockBack.SetAirStall(AttackDefinition.AirStallDuration);
-        targetKnockBack.SetAirBorneKnockUp(AttackDefinition.AirBorneKnockUp);
-        targetKnockBack.SetContactPoint(AttackDefinition.SkillType, _comboPoint);
-        targetKnockBack.ResetDownForce();
+        targetStun.AirBorneKnockUp = AttackDefinition.AirBorneKnockUp;
+        targetStun.StunDuration = AttackDefinition.StunDuration;
+        targetStun.ApplyKnockBack(AttackDefinition.HitStopDuration);
+        targetStun.AllowKnockBackToApply(_knockBackPower);
+        targetStun.SetAirStall(AttackDefinition.AirStallDuration);
+        targetStun.SetContactPoint(AttackDefinition.SkillType, _comboPoint);
+        targetStun.ResetDownForce();
     }
 
     void ApplyKnockBackDeceleration()
@@ -242,6 +250,6 @@ public class HitBox : MonoBehaviour
         _targetHealthLogic = collider.GetComponent<HealthLogic>();
         _targetSound = collider.GetComponent<ImpactSoundHandler>();
         _targetNavMesh = collider.GetComponent<NavMeshAgent>();
-        _targetKnockBackHandler = collider.GetComponent<KnockBackHandler>();
+        _targetStunHandler = collider.GetComponent<StunHandler>();
     }
 }

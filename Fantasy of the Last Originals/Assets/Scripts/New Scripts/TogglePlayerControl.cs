@@ -23,11 +23,4 @@ public class TogglePlayerControl : MonoBehaviour
             _player.enabled = true;
         }
     }
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Ground")
-        {
-            //_playerLogic.enabled = true;
-        }
-    }
 }

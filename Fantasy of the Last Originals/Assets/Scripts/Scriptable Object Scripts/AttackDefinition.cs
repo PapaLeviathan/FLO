@@ -11,6 +11,8 @@ public class AttackDefinition : ScriptableObject
     public float AttackRange = 1f;
     public float KnockBackStrength = 6f;
     public float KnockUpStrength = 2f;
+    public float StunDuration = .1f;
+    
     public float AirBorneKnockUp = 1;
     public float LaunchLimiter = 1f;
 
@@ -21,10 +23,5 @@ public class AttackDefinition : ScriptableObject
     public float HitBoxLinger = .2f;
     
     [Header("Effects")]
-    
     public GameObject Effect;
-
-    public Vector3 EffectPosition;
-    public Quaternion EffectRotation;
-    public Vector3 EffectScale;
 }

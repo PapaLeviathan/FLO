@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class AttackPhysics : MonoBehaviour
 {
-    [SerializeField] float _closestTargetingDistance = 4f;
+    [SerializeField] float _stoppingDistance = 4f;
 
     GameObject m_player;
 
     CharacterController m_controller;
     Rigidbody m_rb;
 
-    [SerializeField]
-    float _attackSlideDistance = 5f;
+    [SerializeField] float _attackSlideDistance = 5f;
 
     bool m_sliding = false;
+    private AutoTargetEnemy _enemyTargeter;
+
+    private bool EnemyIsTooClose => Vector3.Distance(transform.position, _enemyTargeter.Enemy.transform.position) <
+                                    _stoppingDistance;
 
     private void Start()
     {
         m_rb = GetComponent<Rigidbody>();
         m_controller = GetComponent<CharacterController>();
+        _enemyTargeter = GetComponent<AutoTargetEnemy>();
     }
 
     private void Update()
     {
-        if (m_sliding) //applies forward movement to character controller when m_sliding is true
+        if (m_sliding && !EnemyIsTooClose) //applies forward movement to character controller when m_sliding is true
         {
             AttackSlide(AttackSlideDistance(_attackSlideDistance));
         }
@@ -32,7 +36,7 @@ public class AttackPhysics : MonoBehaviour
 
     void AttackSlide(float distance)
     {
-            transform.position += transform.forward * Time.deltaTime * distance;
+        transform.position += transform.forward * Time.deltaTime * distance;
     }
 
     public float AttackSlideDistance(float distance)
@@ -44,20 +48,14 @@ public class AttackPhysics : MonoBehaviour
     {
         _attackSlideDistance = AttackSlideDistance(_attackSlideDistance);
     }
+
     IEnumerator SlideDuration(float slideDuration)
     {
-        var enemyTargeter = GetComponent<AutoTargetEnemy>();
-        if (Vector3.Distance(transform.position, enemyTargeter.Enemy.transform.position) > _closestTargetingDistance)
-        {
-            m_sliding = true;
-            yield return new WaitForSeconds(slideDuration);
-            m_sliding = false;
-        }
-        else if(enemyTargeter.Enemy == null)
-        {
-            m_sliding = true;
-            yield return new WaitForSeconds(slideDuration);
-            m_sliding = false;
-        }
+        if (EnemyIsTooClose)
+            yield break;
+
+        m_sliding = true;
+        yield return new WaitForSeconds(slideDuration);
+        m_sliding = false;
     }
 }

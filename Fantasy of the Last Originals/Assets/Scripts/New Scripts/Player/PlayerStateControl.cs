@@ -15,7 +15,7 @@ public enum PlayerState
 public class PlayerStateControl : MonoBehaviour
 {
     Player _player;
-    KnockBackHandler _knockBackHandler;
+    StunHandler _stunHandler;
 
     Rigidbody _rigidbody;
     public PlayerState _playerState;

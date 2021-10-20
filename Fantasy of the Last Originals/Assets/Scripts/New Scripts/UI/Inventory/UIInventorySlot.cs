@@ -10,11 +10,12 @@ public class UIInventorySlot : MonoBehaviour, IPointerDownHandler,
     IPointerExitHandler
 {
     public event Action<UIInventorySlot> OnSlotClicked;
-    
+
+    [SerializeField] private UIInventoryPanel _linkedPanel;
     [SerializeField] private Image _image;
     [SerializeField] private Image _selectedImage;
     [SerializeField] private Image _focusedImage;
-    [SerializeField] private int _sortIndex;
+    [SerializeField] protected int _sortIndex;
     
     public SlotType _slotType;
 
@@ -24,6 +25,8 @@ public class UIInventorySlot : MonoBehaviour, IPointerDownHandler,
     public Sprite Icon => _image.sprite;
     public bool IconImageEnabled => _image.enabled;
     public int SortIndex => _sortIndex;
+
+    protected Inventory Inventory => _linkedPanel.Inventory;
 
 
     private void OnValidate()
@@ -50,9 +53,8 @@ public class UIInventorySlot : MonoBehaviour, IPointerDownHandler,
         OnSlotClicked?.Invoke(this);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("eneded drag");
         var droppedOnSlot = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<UIInventorySlot>();
         
         if (droppedOnSlot != null)

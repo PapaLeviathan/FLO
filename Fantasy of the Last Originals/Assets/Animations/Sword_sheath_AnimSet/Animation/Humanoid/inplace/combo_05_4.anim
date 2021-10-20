@@ -26920,7 +26920,7 @@ AnimationClip:
     functionName: SlideDuration
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0.1
+    floatParameter: 0.3
     intParameter: 0
     messageOptions: 0
   - time: 0
@@ -26937,8 +26937,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.06666667
+    functionName: SetActiveWeaponHitBox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.2
     functionName: PlayVFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
+    functionName: SetActiveWeaponHitBox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

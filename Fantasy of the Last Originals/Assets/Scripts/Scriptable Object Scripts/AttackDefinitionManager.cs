@@ -5,8 +5,14 @@ using UnityEngine;
 public class AttackDefinitionManager : MonoBehaviour
 {
     public AttackDefinition CurrentAttackDefinition { get; set; }
+    private Inventory _inventory;
 
     private HitBox _hitBox;
+
+    private void Start()
+    {
+        _inventory = GetComponent<Inventory>();
+    }
 
     public void Update()
     {
@@ -19,13 +25,17 @@ public class AttackDefinitionManager : MonoBehaviour
         CurrentAttackDefinition = attackDefinition;
     }
 
-    public void SetDefinitionEffectPosition(EffectPositionDefinition effectPositionDefinition)
+    public void SetActiveWeaponHitBox()
     {
-        CurrentAttackDefinition.EffectPosition = transform.InverseTransformPoint(effectPositionDefinition.EffectPosition);
+        if (_inventory.ActiveWeapon)
+            _inventory.ActiveWeapon.SetHitBox();
     }
 
     public void PlayVFX()
     {
+        if (!_inventory.ActiveWeapon)
+            return;
+        
         var effect = Instantiate(CurrentAttackDefinition.Effect);
         effect.transform.localPosition = _hitBox.EffectPosition.position;
         effect.transform.localRotation = _hitBox.EffectPosition.rotation;

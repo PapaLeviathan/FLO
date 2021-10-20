@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SetHitStunFalse : StateMachineBehaviour
 {
@@ -10,6 +11,8 @@ public class SetHitStunFalse : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(IsInHitStun, false);
+        animator.GetComponent<NavMeshAgent>().enabled = true;
+        animator.GetComponent<Rigidbody>().useGravity = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
